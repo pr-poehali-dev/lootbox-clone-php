@@ -1,0 +1,33 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS request for CORS",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedHeaders": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    },
+    {
+      "name": "GET all cases",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": "array",
+      "bodyMatcher": "type"
+    },
+    {
+      "name": "GET specific case",
+      "method": "GET",
+      "path": "/?caseId=1",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "id": "number",
+        "name": "string",
+        "price": "number"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

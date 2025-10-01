@@ -1,0 +1,34 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS request for CORS",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedHeaders": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    },
+    {
+      "name": "Create new user",
+      "method": "POST",
+      "path": "/",
+      "headers": {
+        "X-User-Token": "test_token"
+      },
+      "body": {
+        "username": "testuser",
+        "email": "test@example.com",
+        "authProvider": "google",
+        "authProviderId": "123456"
+      },
+      "expectedStatus": 201,
+      "expectedBody": {
+        "id": "number",
+        "username": "testuser",
+        "balance": "number"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
